@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D30CA77F1FCB720A0040184D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CA77E1FCB720A0040184D /* AppDelegate.swift */; };
-		D30CA7811FCB720A0040184D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CA7801FCB720A0040184D /* ViewController.swift */; };
+		D30CA7811FCB720A0040184D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CA7801FCB720A0040184D /* SearchViewController.swift */; };
 		D30CA7841FCB720A0040184D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30CA7821FCB720A0040184D /* Main.storyboard */; };
 		D30CA7861FCB720A0040184D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30CA7851FCB720A0040184D /* Assets.xcassets */; };
 		D30CA7891FCB720A0040184D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30CA7871FCB720A0040184D /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		D30CA77B1FCB720A0040184D /* StoreSearchApprenticeTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearchApprenticeTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30CA77E1FCB720A0040184D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D30CA7801FCB720A0040184D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D30CA7801FCB720A0040184D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D30CA7831FCB720A0040184D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D30CA7851FCB720A0040184D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30CA7881FCB720A0040184D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				D30CA77E1FCB720A0040184D /* AppDelegate.swift */,
-				D30CA7801FCB720A0040184D /* ViewController.swift */,
+				D30CA7801FCB720A0040184D /* SearchViewController.swift */,
 				D30CA7821FCB720A0040184D /* Main.storyboard */,
 				D30CA7851FCB720A0040184D /* Assets.xcassets */,
 				D30CA7871FCB720A0040184D /* LaunchScreen.storyboard */,
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D30CA7811FCB720A0040184D /* ViewController.swift in Sources */,
+				D30CA7811FCB720A0040184D /* SearchViewController.swift in Sources */,
 				D30CA77F1FCB720A0040184D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +277,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E87RB5PK6M;
 				INFOPLIST_FILE = StoreSearchApprenticeTutorial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Anatoliy-Chernyuk.StoreSearchApprenticeTutorial";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E87RB5PK6M;
 				INFOPLIST_FILE = StoreSearchApprenticeTutorial/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Anatoliy-Chernyuk.StoreSearchApprenticeTutorial";
 				PRODUCT_NAME = "$(TARGET_NAME)";

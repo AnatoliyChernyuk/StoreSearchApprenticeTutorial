@@ -10,19 +10,25 @@ import UIKit
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        searchResults = []
-        hasSearched = true
-        if searchBar.text! != "Justin Bieber" {
-            for i in 0...2 {
-                let searchResult = SearchResult()
-                searchResult.name = String(format: "Fake result %d for", i)
-                searchResult.artistName = searchBar.text!
-                searchResults.append(searchResult)
+        if !searchBar.text!.isEmpty {
+            searchBar.resignFirstResponder()
+            searchResults = []
+            hasSearched = true
+            
+            let url = iTunesURL(searchText: searchBar.text!)
+            print("URL: '\(url)'")
+            if let jsonString = performStoreRequest(with: url) {
+                //print("Received JSON string '\(jsonString)'")
+                if let jsonDictionary = parse(json: jsonString) {
+                    //print("Dictionary \(jsonDictionary)")
+                    searchResults = parse(dictionary: jsonDictionary)
+                    searchResults.sort(by: <)
+                    tableView.reloadData()
+                    return
+                }
             }
+            showNetworkError()
         }
-        
-        tableView.reloadData()
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {

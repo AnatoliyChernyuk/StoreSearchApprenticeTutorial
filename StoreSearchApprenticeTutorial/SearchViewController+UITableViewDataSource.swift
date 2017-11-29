@@ -23,9 +23,13 @@ extension SearchViewController: UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
-                let searchResult = searchResults[indexPath.row]
-                cell.nameLabel.text = searchResult.name
-                cell.artistNameLabel.text = searchResult.artistName
+            let searchResult = searchResults[indexPath.row]
+            cell.nameLabel.text = searchResult.name
+            if searchResult.artistName.isEmpty {
+                cell.artistNameLabel.text = "Unknown"
+            } else {
+                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, kindForDisplay(searchResult.kind))
+            }
             return cell
         }
     }

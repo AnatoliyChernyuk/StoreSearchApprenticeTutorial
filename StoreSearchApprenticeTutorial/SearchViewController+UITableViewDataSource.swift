@@ -10,7 +10,7 @@ import UIKit
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchResults.count == 0 {
+        if searchResults.count == 0 || isLoading {
             return 1
         } else {
             return searchResults.count
@@ -19,7 +19,12 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if searchResults.count == 0 {
+        if isLoading {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.loadingCell, for: indexPath)
+            let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+            spinner.startAnimating()
+            return cell
+        } else if searchResults.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell

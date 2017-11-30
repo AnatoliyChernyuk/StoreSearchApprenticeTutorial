@@ -12,12 +12,14 @@ class SearchViewController: UIViewController {
     struct TableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
         static let nothingFoundCell = "NothingFoundCell"
+        static let loadingCell = "LoadingCell"
     }
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     var hasSearched = false
+    var isLoading = false
     var searchResults = [SearchResult]()
 
     override func viewDidLoad() {
@@ -30,6 +32,9 @@ class SearchViewController: UIViewController {
         cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
         searchBar.becomeFirstResponder()
+        
+        cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +44,7 @@ class SearchViewController: UIViewController {
     
     func iTunesURL(searchText: String) -> URL {
         let escapedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchText)
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200", escapedSearchText)
         let url = URL(string: urlString)
         return url!
     }

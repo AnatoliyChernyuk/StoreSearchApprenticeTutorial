@@ -12,22 +12,28 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
+            isLoading = true
+            tableView.reloadData()
+            
             searchResults = []
             hasSearched = true
             
-            let url = iTunesURL(searchText: searchBar.text!)
-            print("URL: '\(url)'")
-            if let jsonString = performStoreRequest(with: url) {
-                //print("Received JSON string '\(jsonString)'")
-                if let jsonDictionary = parse(json: jsonString) {
-                    //print("Dictionary \(jsonDictionary)")
-                    searchResults = parse(dictionary: jsonDictionary)
-                    searchResults.sort(by: <)
-                    tableView.reloadData()
+            let queue = DispatchQueue.global()
+            queue.async {
+                let url = self.iTunesURL(searchText: searchBar.text!)
+                if let jsonString = self.performStoreRequest(with: url), let jsonDictionary = self.parse(json: jsonString) {
+                    self.searchResults = self.parse(dictionary: jsonDictionary)
+                    self.searchResults.sort(by: <)
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.tableView.reloadData()
+                    }
                     return
                 }
+                DispatchQueue.main.async {
+                    self.showNetworkError()
+                }
             }
-            showNetworkError()
         }
     }
     

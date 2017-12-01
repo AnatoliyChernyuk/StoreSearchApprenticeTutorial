@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var dataTask: URLSessionDataTask?
     var hasSearched = false
     var isLoading = false
     var searchResults = [SearchResult]()

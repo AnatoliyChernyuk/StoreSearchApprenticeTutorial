@@ -13,6 +13,7 @@ extension SearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             isLoading = true
+            dataTask?.cancel()
             tableView.reloadData()
             
             searchResults = []
@@ -20,10 +21,10 @@ extension SearchViewController: UISearchBarDelegate {
             
             let url = iTunesURL(searchText: searchBar.text!)
             let session = URLSession.shared
-            let dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
-                print("On the main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
-                if let error = error {
-                    print("Failure! \(error)")
+            dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
+                //print("On the main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
+                if let error = error as NSError?, error.code == -999 {
+                    return //Seaarch was cancelled
                 } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                     if let data = data, let jsonDictionary = self.parse(json: data) {
                         self.searchResults = self.parse(dictionary: jsonDictionary)
@@ -46,7 +47,7 @@ extension SearchViewController: UISearchBarDelegate {
                     self.showNetworkError()
                 }
             })
-            dataTask.resume()
+            dataTask?.resume()
         }
     }
     

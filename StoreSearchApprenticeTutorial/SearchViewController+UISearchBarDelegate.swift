@@ -18,22 +18,35 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             hasSearched = true
             
-            let queue = DispatchQueue.global()
-            queue.async {
-                let url = self.iTunesURL(searchText: searchBar.text!)
-                if let jsonString = self.performStoreRequest(with: url), let jsonDictionary = self.parse(json: jsonString) {
-                    self.searchResults = self.parse(dictionary: jsonDictionary)
-                    self.searchResults.sort(by: <)
-                    DispatchQueue.main.async {
-                        self.isLoading = false
-                        self.tableView.reloadData()
+            let url = iTunesURL(searchText: searchBar.text!)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
+                print("On the main thread? " + (Thread.current.isMainThread ? "Yes" : "No"))
+                if let error = error {
+                    print("Failure! \(error)")
+                } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    if let data = data, let jsonDictionary = self.parse(json: data) {
+                        self.searchResults = self.parse(dictionary: jsonDictionary)
+                        self.searchResults.sort(by: <)
+                        DispatchQueue.main.async {
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        }
+                        return
                     }
-                    return
+                    
+                    
+                } else {
+                    print("Failure! \(response!)")
                 }
                 DispatchQueue.main.async {
+                    self.hasSearched = false
+                    self.isLoading = false
+                    self.tableView.reloadData()
                     self.showNetworkError()
                 }
-            }
+            })
+            dataTask.resume()
         }
     }
     
@@ -41,3 +54,31 @@ extension SearchViewController: UISearchBarDelegate {
         return .topAttached
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

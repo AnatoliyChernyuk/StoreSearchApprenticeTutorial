@@ -84,10 +84,6 @@ class SearchViewController: UIViewController {
                         }
                         return
                     }
-                    
-                    
-                } else {
-                    print("Failure! \(response!)")
                 }
                 DispatchQueue.main.async {
                     self.hasSearched = false
@@ -210,22 +206,6 @@ class SearchViewController: UIViewController {
             searchResult.genre = (genres as! [String]).joined(separator: ", ")
         }
         return searchResult
-    }
-    
-    func kindForDisplay(_ kind: String) -> String {
-        switch kind {
-        case "album": return "Album"
-        case "audiobook": return "Audio Book"
-        case "book": return "Book"
-        case "ebook": return "E-Book"
-        case "feature-movie": return "Movie"
-        case "music-video": return "Music Video"
-        case "podcast": return "Podcast"
-        case "software": return "App"
-        case "song": return "Song"
-        case "tv-episode": return "TV Episode"
-        default: return kind
-        }
     }
     
     func showNetworkError() {

@@ -19,6 +19,7 @@
 		D30CA79B1FCCB2E30040184D /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CA79A1FCCB2E30040184D /* SearchResultCell.swift */; };
 		D30CA79D1FCCBD8F0040184D /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30CA79C1FCCBD8F0040184D /* NothingFoundCell.xib */; };
 		D30CA7A11FCF7BA90040184D /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30CA7A01FCF7BA90040184D /* LoadingCell.xib */; };
+		D3E7E1541FD2C0DC00AB2F6C /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E7E1531FD2C0DC00AB2F6C /* UIImageView+DownloadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D30CA79A1FCCB2E30040184D /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		D30CA79C1FCCBD8F0040184D /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		D30CA7A01FCF7BA90040184D /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		D3E7E1531FD2C0DC00AB2F6C /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				D30CA7901FCC72CF0040184D /* SearchViewController+UISearchBarDelegate.swift */,
 				D30CA7921FCC74610040184D /* SearchViewController+UITableViewDataSource.swift */,
 				D30CA7941FCC749B0040184D /* SearchViewController+UITableViewDelegate.swift */,
+				D3E7E1531FD2C0DC00AB2F6C /* UIImageView+DownloadImage.swift */,
 			);
 			path = StoreSearchApprenticeTutorial;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				D30CA7951FCC749B0040184D /* SearchViewController+UITableViewDelegate.swift in Sources */,
 				D30CA7811FCB720A0040184D /* SearchViewController.swift in Sources */,
 				D30CA7911FCC72CF0040184D /* SearchViewController+UISearchBarDelegate.swift in Sources */,
+				D3E7E1541FD2C0DC00AB2F6C /* UIImageView+DownloadImage.swift in Sources */,
 				D30CA7931FCC74610040184D /* SearchViewController+UITableViewDataSource.swift in Sources */,
 				D30CA7971FCC98820040184D /* SearchResult.swift in Sources */,
 				D30CA77F1FCB720A0040184D /* AppDelegate.swift in Sources */,

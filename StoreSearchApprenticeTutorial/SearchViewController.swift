@@ -145,7 +145,7 @@ class SearchViewController: UIViewController {
         searchResult.storeURL = dictionary["trackViewUrl"] as! String
         searchResult.kind = dictionary["kind"] as! String
         searchResult.currency = dictionary["currency"] as! String
-        if let price = dictionary["price"] as? Double {
+        if let price = dictionary["trackPrice"] as? Double {
             searchResult.price = price
         }
         if let genre = dictionary["primaryGenreName"] as? String {
@@ -218,6 +218,15 @@ class SearchViewController: UIViewController {
     //MARK: Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         performSearch()
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetail", let indexPath = sender as? IndexPath {
+            let controller = segue.destination as! DetailViewController
+            let searchItem = searchResults[indexPath.row]
+            controller.searchResult = searchItem
+        }
     }
 }
 

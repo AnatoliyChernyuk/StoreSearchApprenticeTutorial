@@ -33,8 +33,6 @@ extension SearchViewController: UITableViewDataSource {
             return cell
         }
     }
-    
-    
 }
 
 

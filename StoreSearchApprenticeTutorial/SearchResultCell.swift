@@ -24,10 +24,12 @@ class SearchResultCell: UITableViewCell {
     
     func configure(for searchResult: SearchResult) {
         nameLabel.text = searchResult.name
+        nameLabel.adjustsFontForContentSizeCategory = true
         if searchResult.artistName.isEmpty {
             artistNameLabel.text = "Unknown"
         } else {
             artistNameLabel.text = String(format: "%@, (%@)", searchResult.artistName, searchResult.kindForDisplay())
+            artistNameLabel.adjustsFontForContentSizeCategory = true
         }
         artworkImageView.image = UIImage(named: "Placeholder")
         if let smallURL = URL(string: searchResult.artworkSmallURL) {

@@ -237,6 +237,9 @@ class SearchViewController: UIViewController {
             addChildViewController(controller)
             coordinator.animate(alongsideTransition: {_ in controller.view.alpha = 1}, completion: { _ in
                 controller.didMove(toParentViewController: self)
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
             })
         }
     }

@@ -28,7 +28,7 @@ class LandscapeViewController: UIViewController {
         pageControl.removeConstraints(pageControl.constraints)
         pageControl.translatesAutoresizingMaskIntoConstraints = true
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
-        
+        pageControl.numberOfPages = 0
     }
 
     override func viewWillLayoutSubviews() {
@@ -85,7 +85,7 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        for (index, searchResult) in searchResults.enumerated() {
+        for (index, _) in searchResults.enumerated() {
             let button = UIButton(type: .system)
             button.backgroundColor = UIColor.white
             button.setTitle(String(index), for: .normal)
@@ -106,17 +106,17 @@ class LandscapeViewController: UIViewController {
         let numPages = 1 + (searchResults.count - 1) / buttonsPerPage
         scrollView.contentSize = CGSize(width: CGFloat(numPages) * scrollViewWidth, height: scrollView.bounds.size.height)
         print("Number of pages \(numPages)")
+        
+        pageControl.numberOfPages = numPages
+        pageControl.currentPage = 0
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - Actions
+    @IBAction func pageChanged(_ sender: UIPageControl) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+            self.scrollView.contentOffset = CGPoint(x: self.scrollView.bounds.width * CGFloat(sender.currentPage), y: 0)
+        }, completion: nil)
     }
-    */
 
 }
 

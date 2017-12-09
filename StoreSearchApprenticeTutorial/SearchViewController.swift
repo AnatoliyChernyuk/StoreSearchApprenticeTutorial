@@ -20,9 +20,9 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var dataTask: URLSessionDataTask?
-    var hasSearched = false
+    private var hasSearched = false
     var isLoading = false
-    var landscapeViewController: UIViewController?
+    private var landscapeViewController: LandscapeViewController?
     var searchResults = [SearchResult]()
 
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func iTunesURL(searchText: String, category: Int) -> URL {
+    private func iTunesURL(searchText: String, category: Int) -> URL {
         let entityName: String
         switch category {
         case 1: entityName = "musicTrack"
@@ -107,7 +107,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func parse(json data: Data) -> [String: Any]? {
+    private func parse(json data: Data) -> [String: Any]? {
         do {
             return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
         } catch {
@@ -116,7 +116,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func parse(dictionary: [String: Any]) -> [SearchResult] {
+    private func parse(dictionary: [String: Any]) -> [SearchResult] {
         guard let array = dictionary["results"] as? [Any] else {
             print("Expected 'results' array")
             return []
@@ -147,7 +147,7 @@ class SearchViewController: UIViewController {
         return searchResults
     }
     
-    func parse(track dictionary: [String: Any]) -> SearchResult {
+    private func parse(track dictionary: [String: Any]) -> SearchResult {
         let searchResult = SearchResult()
         searchResult.name = dictionary["trackName"] as! String
         searchResult.artistName = dictionary["artistName"] as! String
@@ -165,7 +165,7 @@ class SearchViewController: UIViewController {
         return searchResult
     }
     
-    func parse(audiobook dictionary: [String: Any]) -> SearchResult {
+    private func parse(audiobook dictionary: [String: Any]) -> SearchResult {
         let searchResult = SearchResult()
         searchResult.name = dictionary["collectionName"] as! String
         searchResult.artistName = dictionary["artistName"] as! String
@@ -183,7 +183,7 @@ class SearchViewController: UIViewController {
         return searchResult
     }
     
-    func parse(software dictionary: [String: Any]) -> SearchResult {
+    private func parse(software dictionary: [String: Any]) -> SearchResult {
         let searchResult = SearchResult()
         searchResult.name = dictionary["trackName"] as! String
         searchResult.artistName = dictionary["artistName"] as! String
@@ -201,7 +201,7 @@ class SearchViewController: UIViewController {
         return searchResult
     }
     
-    func parse(ebook dictionary: [String: Any]) -> SearchResult {
+    private func parse(ebook dictionary: [String: Any]) -> SearchResult {
         let searchResult = SearchResult()
         searchResult.name = dictionary["trackName"] as! String
         searchResult.artistName = dictionary["artistName"] as! String
@@ -219,17 +219,18 @@ class SearchViewController: UIViewController {
         return searchResult
     }
     
-    func showNetworkError() {
+    private func showNetworkError() {
         let alert = UIAlertController(title: "Whoops...", message: "There was an error reading from the iTunes Store. Please try again.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
-    func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+    private func showLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
         guard landscapeViewController == nil else {return}
-        landscapeViewController = storyboard!.instantiateViewController(withIdentifier: "LandscapeViewController") as! LandscapeViewController
+        landscapeViewController = (storyboard!.instantiateViewController(withIdentifier: "LandscapeViewController") as! LandscapeViewController)
         if let controller = landscapeViewController {
+            controller.searchResults = searchResults
             controller.view.frame = view.bounds
             controller.view.alpha = 0
             searchBar.resignFirstResponder()
@@ -244,7 +245,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func hideLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
+    private func hideLandscape(with coordinator: UIViewControllerTransitionCoordinator) {
         if let controller = landscapeViewController {
             controller.willMove(toParentViewController: nil)
             coordinator.animate(alongsideTransition: { _ in

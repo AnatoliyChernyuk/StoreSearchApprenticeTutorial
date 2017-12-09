@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var priceButton: UIButton!
     
-    var dismissAnimationStyle = AnimationStyle.fade
+    private var dismissAnimationStyle = AnimationStyle.fade
     var downloadTask: URLSessionDownloadTask?
     var searchResult: SearchResult!
     
@@ -54,7 +54,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func updateUI() {
+    private func updateUI() {
         nameLabel.text = searchResult.name
         if searchResult.artistName.isEmpty {
             artistNameLabel.text = "Unknown"

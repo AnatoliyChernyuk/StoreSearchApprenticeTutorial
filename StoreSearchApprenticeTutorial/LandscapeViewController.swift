@@ -12,11 +12,15 @@ class LandscapeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    private var downloadTasks = [URLSessionDownloadTask]()
     private var firstTime = true
     var searchResults = [SearchResult]()
     
     deinit {
-        //print("deinit \(self)")
+        for task in downloadTasks {
+            task.cancel()
+        }
+        downloadTasks.removeAll()
     }
 
     override func viewDidLoad() {
@@ -85,11 +89,11 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        for (index, _) in searchResults.enumerated() {
-            let button = UIButton(type: .system)
-            button.backgroundColor = UIColor.white
-            button.setTitle(String(index), for: .normal)
+        for (index, searchResult) in searchResults.enumerated() {
+            let button = UIButton(type: .custom)
+            button.setBackgroundImage(UIImage(named: "LandscapeButton"), for: .normal)
             button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row) * itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
+            downloadImage(for: searchResult, andPlaceOn: button)
             scrollView.addSubview(button)
             row += 1
             if row == rowsPerPage {
@@ -109,6 +113,23 @@ class LandscapeViewController: UIViewController {
         
         pageControl.numberOfPages = numPages
         pageControl.currentPage = 0
+    }
+    
+    private func downloadImage(for searchResult: SearchResult, andPlaceOn button: UIButton) {
+        if let url = URL(string: searchResult.artworkSmallURL) {
+            let downloadTask = URLSession.shared.downloadTask(with: url) {
+                [weak button] url, response, error in
+                if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        if let button = button {
+                            button.setImage(image, for: .normal)
+                        }
+                    }
+                }
+            }
+            downloadTasks.append(downloadTask)
+            downloadTask.resume()
+        }
     }
     
     //MARK: - Actions

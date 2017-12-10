@@ -120,9 +120,11 @@ class LandscapeViewController: UIViewController {
             let downloadTask = URLSession.shared.downloadTask(with: url) {
                 [weak button] url, response, error in
                 if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    
                     DispatchQueue.main.async {
                         if let button = button {
-                            button.setImage(image, for: .normal)
+                            button.setImage(image.resizedImage(withBounds: CGSize(width: 60, height: 60)), for: .normal)
+                            
                         }
                     }
                 }

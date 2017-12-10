@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		60021C4F1FDDAEDD001FCF41 /* extensionUIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60021C4E1FDDAEDD001FCF41 /* extensionUIImage+Resize.swift */; };
+		60021C511FDDB769001FCF41 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60021C501FDDB769001FCF41 /* Search.swift */; };
 		D3014C601FD5CA7200465E61 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3014C5F1FD5CA7200465E61 /* BounceAnimationController.swift */; };
 		D3014C621FD5F91200465E61 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3014C611FD5F91200465E61 /* SlideOutAnimationController.swift */; };
 		D30CA77F1FCB720A0040184D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CA77E1FCB720A0040184D /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		60021C4E1FDDAEDD001FCF41 /* extensionUIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extensionUIImage+Resize.swift"; sourceTree = "<group>"; };
+		60021C501FDDB769001FCF41 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D3014C5F1FD5CA7200465E61 /* BounceAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
 		D3014C611FD5F91200465E61 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		D30CA77B1FCB720A0040184D /* StoreSearchApprenticeTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearchApprenticeTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				D30CA7A01FCF7BA90040184D /* LoadingCell.xib */,
 				D30CA7821FCB720A0040184D /* Main.storyboard */,
 				D30CA79C1FCCBD8F0040184D /* NothingFoundCell.xib */,
+				60021C501FDDB769001FCF41 /* Search.swift */,
 				D30CA7961FCC98820040184D /* SearchResult.swift */,
 				D30CA79A1FCCB2E30040184D /* SearchResultCell.swift */,
 				D30CA7981FCCA9F60040184D /* SearchResultCell.xib */,
@@ -198,6 +201,7 @@
 				D3014C621FD5F91200465E61 /* SlideOutAnimationController.swift in Sources */,
 				D30CA7811FCB720A0040184D /* SearchViewController.swift in Sources */,
 				D30CA7911FCC72CF0040184D /* SearchViewController+UISearchBarDelegate.swift in Sources */,
+				60021C511FDDB769001FCF41 /* Search.swift in Sources */,
 				60021C4F1FDDAEDD001FCF41 /* extensionUIImage+Resize.swift in Sources */,
 				D3E7E1541FD2C0DC00AB2F6C /* UIImageView+DownloadImage.swift in Sources */,
 				D30CA7931FCC74610040184D /* SearchViewController+UITableViewDataSource.swift in Sources */,

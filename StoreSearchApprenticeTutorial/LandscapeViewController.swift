@@ -14,7 +14,7 @@ class LandscapeViewController: UIViewController {
     
     private var downloadTasks = [URLSessionDownloadTask]()
     private var firstTime = true
-    var searchResults = [SearchResult]()
+    var search: Search!
     
     deinit {
         for task in downloadTasks {
@@ -41,7 +41,7 @@ class LandscapeViewController: UIViewController {
         pageControl.frame = CGRect(x: 0, y: view.frame.size.height - pageControl.frame.size.height, width: view.frame.size.width, height: pageControl.frame.size.height)
         if firstTime {
             firstTime = false
-            titleButtons(searchResults)
+            titleButtons(search.searchResults)
         }
     }
     

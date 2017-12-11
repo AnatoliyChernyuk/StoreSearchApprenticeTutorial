@@ -55,15 +55,17 @@ class SearchViewController: UIViewController {
 
     
     func performSearch() {
-        search.performSearch(for: searchBar.text!, category: segmentedControl.selectedSegmentIndex, completion: {
-            success in
-            if !success {
-                self.showNetworkError()
-            }
-            self.tableView.reloadData()
-        })
-        tableView.reloadData()
-        searchBar.resignFirstResponder()
+        if let category = Search.Category(rawValue: segmentedControl.selectedSegmentIndex) {
+            search.performSearch(for: searchBar.text!, category: category, completion: {
+                success in
+                if !success {
+                    self.showNetworkError()
+                }
+                self.tableView.reloadData()
+            })
+            tableView.reloadData()
+            searchBar.resignFirstResponder()
+        }
     }
     
     private func showNetworkError() {
@@ -97,8 +99,11 @@ class SearchViewController: UIViewController {
             controller.willMove(toParentViewController: nil)
             coordinator.animate(alongsideTransition: { _ in
                 controller.view.alpha = 0
-                if !self.search.hasSearched {
+                switch self.search.state {
+                case .notSearchedYet:
                     self.searchBar.becomeFirstResponder()
+                default:
+                    break
                 }
             }, completion: { _ in
                 controller.view.removeFromSuperview()
@@ -116,9 +121,11 @@ class SearchViewController: UIViewController {
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetail", let indexPath = sender as? IndexPath {
-            let controller = segue.destination as! DetailViewController
-            let searchItem = search.searchResults[indexPath.row]
-            controller.searchResult = searchItem
+            if case .results(let list) = search.state {
+                let controller = segue.destination as! DetailViewController
+                let searchItem = list[indexPath.row]
+                controller.searchResult = searchItem
+            }
         }
     }
 }

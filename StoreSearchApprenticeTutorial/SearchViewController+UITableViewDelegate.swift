@@ -15,9 +15,10 @@ extension SearchViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if search.searchResults.count == 0 || search.isLoading {
+        switch search.state {
+        case .loading, .noResults, .notSearchedYet:
             return nil
-        } else {
+        case .results:
             return indexPath
         }
     }

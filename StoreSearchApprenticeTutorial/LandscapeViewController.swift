@@ -41,7 +41,16 @@ class LandscapeViewController: UIViewController {
         pageControl.frame = CGRect(x: 0, y: view.frame.size.height - pageControl.frame.size.height, width: view.frame.size.width, height: pageControl.frame.size.height)
         if firstTime {
             firstTime = false
-            titleButtons(search.searchResults)
+            switch search.state {
+            case .loading:
+                break
+            case .noResults:
+                break
+            case .notSearchedYet:
+                break
+            case .results(let list):
+                titleButtons(list)
+            }
         }
     }
     

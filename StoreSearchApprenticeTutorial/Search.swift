@@ -6,7 +6,7 @@
 //  Copyright © 2017 Anatoliy Chernyuk. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Search {
     typealias SearchComplete = (Bool) -> Void
@@ -41,6 +41,7 @@ class Search {
     func performSearch(for text: String, category: Category, completion: @escaping SearchComplete) {
          if !text.isEmpty {
             dataTask?.cancel()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
          
             state = .loading
          
@@ -63,6 +64,7 @@ class Search {
                     success = true
                 }
                 DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     completion(success)
                 }
             })

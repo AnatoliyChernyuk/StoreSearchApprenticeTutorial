@@ -62,6 +62,7 @@ class SearchViewController: UIViewController {
                     self.showNetworkError()
                 }
                 self.tableView.reloadData()
+                self.landscapeViewController?.searchResultsReceived()
             })
             tableView.reloadData()
             searchBar.resignFirstResponder()
@@ -98,6 +99,9 @@ class SearchViewController: UIViewController {
         if let controller = landscapeViewController {
             controller.willMove(toParentViewController: nil)
             coordinator.animate(alongsideTransition: { _ in
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
                 controller.view.alpha = 0
                 switch self.search.state {
                 case .notSearchedYet:

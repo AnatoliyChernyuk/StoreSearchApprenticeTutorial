@@ -19,11 +19,14 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    weak var splitViewDetail: DetailViewController?
+    
     private var landscapeViewController: LandscapeViewController?
     var search = Search()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("Search", comment: "Split-view master button")
         tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)

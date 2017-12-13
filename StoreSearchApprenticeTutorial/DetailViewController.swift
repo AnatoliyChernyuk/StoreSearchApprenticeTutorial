@@ -25,7 +25,14 @@ class DetailViewController: UIViewController {
     
     private var dismissAnimationStyle = AnimationStyle.fade
     var downloadTask: URLSessionDownloadTask?
-    var searchResult: SearchResult!
+    var isPopUp = false
+    var searchResult: SearchResult! {
+        didSet {
+            if isViewLoaded {
+                updateUI()
+            }
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,15 +47,18 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.clear
         view.tintColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 1)
-        popupView.layer.cornerRadius = 10
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(close))
-        gestureRecognizer.cancelsTouchesInView = false
-        gestureRecognizer.delegate = self
-        view.addGestureRecognizer(gestureRecognizer)
-        
+        if isPopUp {
+            popupView.layer.cornerRadius = 10
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(close))
+            gestureRecognizer.cancelsTouchesInView = false
+            gestureRecognizer.delegate = self
+            view.addGestureRecognizer(gestureRecognizer)
+            view.backgroundColor = UIColor.clear
+        } else {
+            view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
+            popupView.isHidden = true
+        }
         if searchResult != nil {
             updateUI()
         }
@@ -78,6 +88,7 @@ class DetailViewController: UIViewController {
         if let largeURL = URL(string: searchResult.artworkLargeURL) {
             downloadTask = artworkImageView.loadImage(url: largeURL)
         }
+        popupView.isHidden = false
     }
     
     //MARK: -Actions

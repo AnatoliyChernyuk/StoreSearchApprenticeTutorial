@@ -120,7 +120,7 @@ class LandscapeViewController: UIViewController {
         let buttonsPerPage = columnsPerPage * rowsPerPage
         let numPages = 1 + (searchResults.count - 1) / buttonsPerPage
         scrollView.contentSize = CGSize(width: CGFloat(numPages) * scrollViewWidth, height: scrollView.bounds.size.height)
-        print("Number of pages \(numPages)")
+        //print("Number of pages \(numPages)")
         
         pageControl.numberOfPages = numPages
         pageControl.currentPage = 0
@@ -172,7 +172,7 @@ class LandscapeViewController: UIViewController {
     
     private func showNothingFoundLabel() {
         let label = UILabel(frame: CGRect.zero)
-        label.text = "Nothing Found"
+        label.text = NSLocalizedString("Nothing Found", comment: "Nothing Found value for nothing found label")
         label.textColor = UIColor.white
         label.backgroundColor = UIColor.clear
         

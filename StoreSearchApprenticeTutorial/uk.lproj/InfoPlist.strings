@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  StoreSearchApprenticeTutorial
+
+  Created by Anatoliy Chernyuk on 12/13/17.
+  Copyright © 2017 Anatoliy Chernyuk. All rights reserved.
+*/
+
+
+CFBundleDisplayName = "МагазоШукач";

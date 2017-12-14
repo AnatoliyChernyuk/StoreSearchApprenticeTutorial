@@ -34,10 +34,13 @@ class SearchViewController: UIViewController {
         
         cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
-        searchBar.becomeFirstResponder()
         
         cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
+        
+        if UIDevice.current.userInterfaceIdiom != .pad {
+                    searchBar.becomeFirstResponder()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,6 +123,14 @@ class SearchViewController: UIViewController {
         }
     }
     
+    func hideMasterPane() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.splitViewController!.preferredDisplayMode = .primaryHidden
+        }) { _ in
+            self.splitViewController!.preferredDisplayMode = .automatic
+        }
+    }
+    
     //MARK: Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         performSearch()
@@ -130,6 +141,7 @@ class SearchViewController: UIViewController {
         if segue.identifier == "ShowDetail", let indexPath = sender as? IndexPath {
             if case .results(let list) = search.state {
                 let controller = segue.destination as! DetailViewController
+                controller.isPopUp = true
                 let searchItem = list[indexPath.row]
                 controller.searchResult = searchItem
             }

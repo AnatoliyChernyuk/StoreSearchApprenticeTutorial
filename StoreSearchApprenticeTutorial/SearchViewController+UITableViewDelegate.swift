@@ -17,6 +17,9 @@ extension SearchViewController: UITableViewDelegate {
             if case .results(let list) = search.state {
                 splitViewDetail?.searchResult = list[indexPath.row]
             }
+            if splitViewController!.displayMode != .allVisible {
+                hideMasterPane()
+            }
         }
     }
     

@@ -48,8 +48,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.tintColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 1)
+        popupView.layer.cornerRadius = 10
         if isPopUp {
-            popupView.layer.cornerRadius = 10
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(close))
             gestureRecognizer.cancelsTouchesInView = false
             gestureRecognizer.delegate = self
@@ -58,6 +58,7 @@ class DetailViewController: UIViewController {
         } else {
             view.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
             popupView.isHidden = true
+            
             if let displayName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String {
                 title = displayName
             }
@@ -88,10 +89,14 @@ class DetailViewController: UIViewController {
             priceText = ""
         }
         priceButton.setTitle(priceText, for: .normal)
+        
         if let largeURL = URL(string: searchResult.artworkLargeURL) {
             downloadTask = artworkImageView.loadImage(url: largeURL)
+            
         }
-        popupView.isHidden = false
+        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            self.popupView.isHidden = false
+        }, completion: { _ in })
     }
     
     //MARK: -Actions

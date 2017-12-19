@@ -14,6 +14,7 @@
 		6045CEB61FE073E500C98137 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6045CEB81FE073E500C98137 /* SearchResultCell.xib */; };
 		6045CEC71FE0879600C98137 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6045CEC51FE0879600C98137 /* Localizable.strings */; };
 		6045CECB1FE1ABC000C98137 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6045CECD1FE1ABC000C98137 /* InfoPlist.strings */; };
+		607E96111FE9B841006E19D2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E96101FE9B840006E19D2 /* MenuViewController.swift */; };
 		D3014C601FD5CA7200465E61 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3014C5F1FD5CA7200465E61 /* BounceAnimationController.swift */; };
 		D3014C621FD5F91200465E61 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3014C611FD5F91200465E61 /* SlideOutAnimationController.swift */; };
 		D30CA77F1FCB720A0040184D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CA77E1FCB720A0040184D /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		6045CEC81FE0883300C98137 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6045CECE1FE1ABC600C98137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6045CECF1FE1ABD300C98137 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		607E96101FE9B840006E19D2 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		D3014C5F1FD5CA7200465E61 /* BounceAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
 		D3014C611FD5F91200465E61 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		D30CA77B1FCB720A0040184D /* StoreSearchApprenticeTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearchApprenticeTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 				6045CEB11FE069E200C98137 /* LoadingCell.xib */,
 				6045CEC51FE0879600C98137 /* Localizable.strings */,
 				D30CA7821FCB720A0040184D /* Main.storyboard */,
+				607E96101FE9B840006E19D2 /* MenuViewController.swift */,
 				6045CEAD1FE0620400C98137 /* NothingFoundCell.xib */,
 				60021C501FDDB769001FCF41 /* Search.swift */,
 				D30CA7961FCC98820040184D /* SearchResult.swift */,
@@ -220,6 +223,7 @@
 				D3E7E1541FD2C0DC00AB2F6C /* UIImageView+DownloadImage.swift in Sources */,
 				D30CA7931FCC74610040184D /* SearchViewController+UITableViewDataSource.swift in Sources */,
 				D3C506A01FD72B5400FD715A /* LandscapeViewController.swift in Sources */,
+				607E96111FE9B841006E19D2 /* MenuViewController.swift in Sources */,
 				D3C506A21FD75A6C00FD715A /* FadeOutAnimationController.swift in Sources */,
 				D30CA7971FCC98820040184D /* SearchResult.swift in Sources */,
 				D3014C601FD5CA7200465E61 /* BounceAnimationController.swift in Sources */,

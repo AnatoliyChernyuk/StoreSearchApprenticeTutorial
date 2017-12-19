@@ -321,10 +321,10 @@
             </objects>
             <point key="canvasLocation" x="638" y="224"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="0Bd-LR-gfM">
             <objects>
-                <tableViewController id="5x2-dA-PIM" sceneMemberID="viewController">
+                <tableViewController id="5x2-dA-PIM" customClass="MenuViewController" customModule="StoreSearchApprenticeTutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="twe-rC-ikX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="204"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

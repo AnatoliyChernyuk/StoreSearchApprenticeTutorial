@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/toliatche/Documents/Study/iOS Apprentice/StoreSearchApprenticeTutorial/StoreSearchApprenticeTutorial/Localizable.strings">
-   </FileRef>
-   <FileRef
       location = "self:StoreSearchApprenticeTutorial.xcodeproj">
    </FileRef>
 </Workspace>
